@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 let mapleader=" "
 
 " text color/fonts
@@ -29,15 +31,17 @@ set showmatch " highlight matching [{()}]
 set foldenable " enable folding
 set foldlevelstart=0 " close all folds by default
 set foldmethod=indent " fold based on indent level (python)
+set noswapfile
 
 
 " reload .vimrc
 map <leader>s :source ~/.vimrc<CR>
 " cancel a search with escape
-nnoremap <silent> <Esc> :nohlsearch<Bar>:echo<CR>
+nnoremap <leader><Esc> :nohlsearch<Bar>:echo<CR>
 " open the previously opened file (in the same vim instance)
 nnoremap <leader><leader> :e#<CR> 
 " turn off highlight from last search
 nnoremap <leader>/ :nohlsearch<CR>
-nnoremap <leader>S :mksession!<CR> " save current session. open with vim -S
+" save current session. open with vim -S
+nnoremap <leader>S :mksession!<CR>
 " need a macro to open/close all folds

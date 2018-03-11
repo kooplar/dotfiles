@@ -13,8 +13,7 @@ echo "...done"
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
 for file in $(ls $SCRIPTPATH | egrep -vi $exclude); do
     #[ -d $file ] && continue
-    echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/.$file ~/dotfiles_old/ 2>/dev/null
-    echo "Creating symlink to $file in home directory."
-    ln -s $SCRIPTPATH/$file ~/.$file
+    mv -f ~/.$file ~/dotfiles_old/ 2>/dev/null
+    echo ln -fs $SCRIPTPATH/$file ~/.$file
+    ln -fs $SCRIPTPATH/$file ~/.$file || echo "failed ln -s $SCRIPTPATH/$file ~/.$file"
 done
