@@ -1,32 +1,20 @@
 #!/bin/bash
-############################
-# .make.sh
-# This script creates symlinks from the home directory to any desired dotfiles in ~/dotfiles
-############################
+#install dotfiles
 
-########## Variables
-
-dir=~/dotfiles                    # dotfiles directory
-olddir=~/dotfiles_old             # old dotfiles backup directory
-
-##########
+SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
+olddir=~/dotfiles_old
+exclude="install|README.md|LICENSE"
 
 # create dotfiles_old in homedir
 echo "Creating $olddir for backup of any existing dotfiles in ~"
 mkdir -p $olddir
 echo "...done"
 
-# change to the dotfiles directory
-echo "Changing to the $dir directory"
-cd $dir
-echo "...done"
-
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
-for file in $(ls $dir); do
+for file in $(ls SCRIPTPATH | egrep -vi $exclude); do
+    [ -d $file ] && continue
     echo "Moving any existing dotfiles from ~ to $olddir"
     mv ~/.$file ~/dotfiles_old/ 2>/dev/null
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/.$file
 done
-
-rm ~/.install 2>/dev/null
