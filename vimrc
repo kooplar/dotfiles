@@ -1,11 +1,13 @@
 execute pathogen#infect()
+" to only load specific packages comment the above and for each plugin do:
+" execute pathogen#interpose('bundle/unicode.vim')
 
 let mapleader=" "
 
 " text color/fonts
 
 " syntax highlight based on filetypes
-filetype on 
+filetype on
 filetype indent on  " load filetype specific indent files
                     " like ~/.vim/indent/python.vim
 if !exists("g:syntax_on") " guard multiple sets
@@ -14,8 +16,9 @@ endif
 colorscheme desert
 set colorcolumn=80
 set nowrap
+set shiftwidth=4
 set tabstop=4 " number of visual spaces per TAB
-set softtabstop=4 " number os dpaces in tab when editing
+set softtabstop=4 " number of spaces in tab when editing
 set expandtab " make tab insert spaces instead
 set expandtab
 set autoindent
@@ -29,9 +32,11 @@ set incsearch " search as characters are entered
 set history=1000 "increase history of commands from thr default 20
 set showmatch " highlight matching [{()}]
 set foldenable " enable folding
-set foldlevelstart=0 " close all folds by default
+set foldlevelstart=99 " how many folds open by default
 set foldmethod=indent " fold based on indent level (python)
 set noswapfile
+set fileformat=unix
+set list listchars=tab:▷⋅,trail:▷,nbsp:▷ " display char for bad empty spaces
 
 
 " reload .vimrc
