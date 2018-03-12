@@ -41,7 +41,7 @@ set list listchars=tab:▷⋅,trail:▷,nbsp:▷ " display char for bad empty sp
 
 " reload .vimrc
 map <leader>s :source ~/.vimrc<CR>
-" cancel a search with escape
+" cancel a previous searches highlights
 nnoremap <leader><Esc> :nohlsearch<Bar>:echo<CR>
 " open the previously opened file (in the same vim instance)
 nnoremap <leader><leader> :e#<CR> 

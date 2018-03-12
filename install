@@ -17,3 +17,10 @@ for file in $(ls $SCRIPTPATH | egrep -vi $exclude); do
     echo ln -fs $SCRIPTPATH/$file ~/.$file
     ln -fs $SCRIPTPATH/$file ~/.$file || echo "failed ln -s $SCRIPTPATH/$file ~/.$file"
 done
+
+#for YoucompleteMe - https://github.com/Valloric/YouCompleteMe
+#steps for Fedora!
+sudo dnf install automake gcc gcc-c++ kernel-devel cmake
+sudo dnf install python-devel python3-devel
+cd ~/.vim/bundle/YouCompleteMe
+./install.py --clang-completer

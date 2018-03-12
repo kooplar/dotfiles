@@ -30,7 +30,11 @@ if [ $1 = "-t" ]; then
     set -x
     mkdir -p  ~/.vim/$dir
     cd ~/.vim/$dir
-    git clone $url
+    git clone --recurse -j8 $url # -8 means clone 8 urls in parallel
+    # if the above --recurse doesnt work try the below
+    #package=$(echo $url | awk -F / '{print $NF}' | cut -d '.' -f 1)
+    #cd $package
+    #git submodule update --init --recursive
 
 else
     dir=$1
@@ -38,7 +42,10 @@ else
     package=$(echo $url | awk -F / '{print $NF}' | cut -d '.' -f 1)
     set -x
     mkdir vim/$dir
-    #git submodule add $url vim/$dir/$package
+    git submodule add $url vim/$dir/$package
+    cd vim/$dir/$package
+    #expand submodules in the added dir
+    git submodule update --init --recursive
 fi
 
 if [[ $dir = "colors" ]]; then
