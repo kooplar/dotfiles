@@ -34,12 +34,11 @@ set foldmethod=indent " fold based on indent level (python)
 set noswapfile
 set fileformat=unix
 set list listchars=tab:▷⋅,trail:▷,nbsp:▷ " display char for bad empty spaces
+set hidden " switch vim buffers without having to save
 
 
 " reload .vimrc
-map <leader>s :source ~/.vimrc<CR>
-" cancel a previous searches highlights
-nnoremap <leader><Esc> :nohlsearch<Bar>:echo<CR>
+nnoremap <leader>s :source ~/.vimrc<CR>
 " open the previously opened file (in the same vim instance)
 nnoremap <leader><leader> :e#<CR> 
 " turn off highlight from last search
