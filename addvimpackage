@@ -30,7 +30,7 @@ if [ $1 = "-t" ]; then
     set -x
     mkdir -p  ~/.vim/$dir
     cd ~/.vim/$dir
-    echo git clone $url
+    git clone $url
 
 else
     dir=$1
@@ -38,14 +38,13 @@ else
     package=$(echo $url | awk -F / '{print $NF}' | cut -d '.' -f 1)
     set -x
     mkdir vim/$dir
-    echo git submodule add $url vim/$dir/$package
+    #git submodule add $url vim/$dir/$package
 fi
-
-cd $SCRIPTPATH
 
 if [[ $dir = "colors" ]]; then
     #color files need to be in .vim/colors/colorfile.vim
-    for f in $(find vim/$dir/$package -name '*.vim' ); do
-        ln -s $f vim/$dir/
+    cd $SCRIPTPATH/vim/$dir
+    for f in $(find $package -name '*.vim' ); do
+        ln -fs $f .
     done
 fi
