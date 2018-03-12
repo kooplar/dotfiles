@@ -24,3 +24,12 @@ sudo dnf install automake gcc gcc-c++ kernel-devel cmake
 sudo dnf install python-devel python3-devel
 cd ~/.vim/bundle/YouCompleteMe
 ./install.py --clang-completer
+
+#Error I fixed on fedora
+libtinfo=$(ls /lib64/libtinfo.so*)
+if [ "$libtinfo" = "" ]; then
+    echo /lib*/libtinfo.so missing!!! run ldd on ycm_core.so if ycm fails
+    echo and link libncurses to it to fix it
+    #cd /lib64
+    #sudo ln -s libncurses.so.* libtinfo.so.*
+fi

@@ -4,14 +4,11 @@ execute pathogen#infect()
 
 let mapleader=" "
 
-" text color/fonts
-
-" syntax highlight based on filetypes
 filetype on
 filetype indent on  " load filetype specific indent files
                     " like ~/.vim/indent/python.vim
 if !exists("g:syntax_on") " guard multiple sets
-        syntax enable
+        syntax enable " syntax highlight based on filetypes
 endif
 colorscheme desert
 set colorcolumn=80
