@@ -33,3 +33,8 @@ if [ "$libtinfo" = "" ]; then
     #cd /lib64
     #sudo ln -s libncurses.so.* libtinfo.so.*
 fi
+
+#for syntastic
+#fedora
+sudo yum install pylint
+#TODO install c, c++ checkers
