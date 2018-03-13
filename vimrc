@@ -1,4 +1,7 @@
-execute pathogen#infect()
+set nocompatible
+" To disable a plugin, add it's bundle name to the following list
+"let g:pathogen_disabled = ['YouCompleteMe', 'syntastic'] " enabled per filetype
+ execute pathogen#infect()
 " to only load specific packages comment the above and for each plugin do:
 " execute pathogen#interpose('bundle/unicode.vim')
 
@@ -38,7 +41,7 @@ set hidden " switch vim buffers without having to save
 
 
 " reload .vimrc
-nnoremap <leader>s :source ~/.vimrc<CR>
+nnoremap <leader>rr :source ~/.vimrc<CR>
 " open the previously opened file (in the same vim instance)
 nnoremap <leader><leader> :e#<CR> 
 " turn off highlight from last search
@@ -47,13 +50,22 @@ nnoremap <leader>/ :nohlsearch<CR>
 nnoremap <leader>S :mksession!<CR>
 " need a macro to open/close all folds
 
+"Syntastic settings
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
+set sessionoptions-=blank " ignore error windows on :mksession
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+"let g:syntastic_always_populate_loc_list = 1 " force loading errors in bottom screen
+"let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_error_symbol = "✗"
-let g:syntastic_warning_symbol = "w" "⚠
+let g:syntastic_warning_symbol = "w" "
+let g:syntastic_loc_list_height = 10
+let g:syntastic_stl_format = "[%E{Err: #%e line#%fe}%B{, }%W{Warn: #%w line#%fw}]"
+
+nnoremap <leader>sc :SyntasticCheck <CR> " run syntax checkers on last save
+nnoremap <leader>se :Errors<CR> <C-w>j " Open up the Syntastics errors screen
+nnoremap <leader>es :lclose<CR> " close the Syntastic errors screen
+nnoremap <leader>sr :SyntasticReset<CR> " remove all syntastic msgs on screen
