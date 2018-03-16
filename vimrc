@@ -1,14 +1,19 @@
 set nocompatible
-" To disable a plugin, add it's bundle name to the following list
-"let g:pathogen_disabled = ['YouCompleteMe', 'syntastic'] " enabled per filetype
- execute pathogen#infect()
-" to only load specific packages comment the above and for each plugin do:
-" execute pathogen#interpose('bundle/unicode.vim')
-
 let mapleader=" "
 
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
+
+call plug#begin('~/.vim/bundle')
+Plug 'jnurmine/Zenburn'
+call plug#end()
+
+
 filetype on
-filetype indent on  " load filetype specific indent files
+filetype plugin indent on  " load filetype specific indent files
                     " like ~/.vim/indent/python.vim
 if !exists("g:syntax_on") " guard multiple sets
         syntax enable " syntax highlight based on filetypes
@@ -69,3 +74,7 @@ nnoremap <leader>sc :SyntasticCheck <CR> " run syntax checkers on last save
 nnoremap <leader>se :Errors<CR> <C-w>j " Open up the Syntastics errors screen
 nnoremap <leader>es :lclose<CR> " close the Syntastic errors screen
 nnoremap <leader>sr :SyntasticReset<CR> " remove all syntastic msgs on screen
+
+
+"YouCompleteMe settings
+let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
