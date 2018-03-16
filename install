@@ -18,23 +18,23 @@ for file in $(ls $SCRIPTPATH | egrep -vi $exclude); do
     ln -fs $SCRIPTPATH/$file ~/.$file || echo "failed ln -s $SCRIPTPATH/$file ~/.$file"
 done
 
-#for YoucompleteMe - https://github.com/Valloric/YouCompleteMe
-#steps for Fedora!
+##for YoucompleteMe - https://github.com/Valloric/YouCompleteMe
+##steps for Fedora!
 sudo dnf install automake gcc gcc-c++ kernel-devel cmake
 sudo dnf install python-devel python3-devel
-cd ~/.vim/bundle/YouCompleteMe
-./install.py --clang-completer
-
-#Error I fixed on fedora
-libtinfo=$(ls /lib64/libtinfo.so*)
-if [ "$libtinfo" = "" ]; then
-    echo /lib*/libtinfo.so missing!!! run ldd on ycm_core.so if ycm fails
-    echo and link libncurses to it to fix it
-    #cd /lib64
-    #sudo ln -s libncurses.so.* libtinfo.so.*
-fi
-
-#for syntastic
-#fedora
-sudo yum install pylint
-#TODO install c, c++ checkers
+#cd ~/.vim/bundle/YouCompleteMe
+#./install.py --clang-completer
+#
+##Error I fixed on fedora
+#libtinfo=$(ls /lib64/libtinfo.so*)
+#if [ "$libtinfo" = "" ]; then
+#    echo /lib*/libtinfo.so missing!!! run ldd on ycm_core.so if ycm fails
+#    echo and link libncurses to it to fix it
+#    #cd /lib64
+#    #sudo ln -s libncurses.so.* libtinfo.so.*
+#fi
+#
+##for syntastic
+##fedora
+#sudo yum install pylint
+##TODO install c, c++ checkers
