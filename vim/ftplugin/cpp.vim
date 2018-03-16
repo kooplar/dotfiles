@@ -1,5 +1,7 @@
 " to load a specific plugin run
-" execute pathogen#interpose('bundle/unicode.vim')
+
+" Default compilation file for YouCompleteMe
+let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf_cpp.py'
 
 set colorcolumn=80
 "set encoding=utf-8

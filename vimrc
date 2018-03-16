@@ -1,14 +1,26 @@
 set nocompatible
 let mapleader=" "
 
+" get vim-plug if not installed
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" To update/install plugins run :PlugUpdate
+" To force update/install plugins (and run the do command) run :PlugUpdate!
+" To view status of plugins run :PlugStatus
 call plug#begin('~/.vim/bundle')
+"colors
 Plug 'jnurmine/Zenburn'
+"code completion/semantics
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer',
+            \'for': ['c','cpp','python', 'vim']}
+"ui plugins
+Plug 'junegunn/goyo.vim' " :Goyo
+Plug 'junegunn/limelight.vim' " :Limelight
+let g:limelight_conceal_ctermfg = 'gray'
 call plug#end()
 
 
@@ -19,13 +31,12 @@ if !exists("g:syntax_on") " guard multiple sets
         syntax enable " syntax highlight based on filetypes
 endif
 colorscheme desert
-set colorcolumn=80
+"set colorcolumn=80
 set nowrap
 set shiftwidth=4
 set tabstop=4 " number of visual spaces per TAB
 set softtabstop=4 " number of spaces in tab when editing
 set expandtab " make tab insert spaces instead
-set expandtab
 set autoindent
 set smartindent
 set number
@@ -44,15 +55,11 @@ set fileformat=unix
 set list listchars=tab:▷⋅,trail:▷,nbsp:▷ " display char for bad empty spaces
 set hidden " switch vim buffers without having to save
 
-
-" reload .vimrc
-nnoremap <leader>rr :source ~/.vimrc<CR>
-" open the previously opened file (in the same vim instance)
-nnoremap <leader><leader> :e#<CR> 
-" turn off highlight from last search
-nnoremap <leader>/ :nohlsearch<CR>
-" save current session. open with vim -S
-nnoremap <leader>S :mksession!<CR>
+inoremap jk <Esc> " jk = esc
+"nnoremap <leader>rr :source ~/.vimrc<CR> " reload .vimrc
+nnoremap <leader><leader> :e#<CR> " open the previously opened file (in the same vim instance)
+nnoremap <leader>/ :nohlsearch<CR> " turn off highlight from last search
+nnoremap <leader>S :mksession!<CR> " save current session. open with vim -S
 " need a macro to open/close all folds
 
 "Syntastic settings
@@ -77,4 +84,17 @@ nnoremap <leader>sr :SyntasticReset<CR> " remove all syntastic msgs on screen
 
 
 "YouCompleteMe settings
-let g:ycm_global_ycm_extra_conf = '~/.vim/ycm_extra_conf.py'
+
+" :YcmDebugInfo "display ycmd settings and compilation flags
+" :YcmCompleter RestartServer /path/to/python3 restart server with optional new binary
+nnoremap <F5> :YcmForceCompileAndDiagnostics<CR> " recompile and show err
+nnoremap <leader>yr :YcmForceCompileAndDiagnostics<CR> " recompile and show err
+nnoremap <leader>ye :YcmDiags<CR> " display bottom row list of errors
+nnoremap <leader>ey :lclose<CR> " close the YCM errors screen
+nnoremap <leader>yf :YcmCompleter FixIt<CR> " fix the errors on the current line
+nnoremap <leader>yg :YcmCompleter GoTo<CR>
+nnoremap <leader>ygr :YcmCompleter GoToReferences<CR> " find references to symbol
+nnoremap <leader>yt :YcmCompleter GetType<CR> " print the type of the variable
+nnoremap <leader>yd :YcmCompleter GetDoc<CR> " show docstring
+nnoremap <leader>y2 :YcmCompleter RestartServer python2 "not tested yet
+nnoremap <leader>y3 :YcmCompleter RestartServer python3 "not tested yet
