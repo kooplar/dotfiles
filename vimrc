@@ -37,6 +37,7 @@ let g:limelight_conceal_ctermfg = 'gray'
 
 call plug#end()
 
+" vim settings. use :help <option> for fmore info
 filetype on
 filetype plugin indent on
 if !exists("g:syntax_on") " guard multiple sets
@@ -68,6 +69,12 @@ set list listchars=tab:▷⋅,trail:▷,nbsp:▷ " display char for bad empty sp
 set hidden " switch vim buffers without having to save
 set wildmenu " show possible completionson commandline
 set timeoutlen=1200 " more time for macros
+set scrolloff=1 " leave cursor one line below end of screen when scrolling
+set sidescrolloff=5
+set ruler " show the line and column # of the cursor position
+set backspace=indent,eol,start
+set formatoptions+=j " Delete comment character when joining commented lines
+set autoread " when the file is changed outside the current buffer, reload it
 
 inoremap jk <Esc> " jk = esc
 "nnoremap <leader>rr :source ~/.vimrc<CR> " reload .vimrc

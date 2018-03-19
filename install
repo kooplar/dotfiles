@@ -13,15 +13,11 @@ echo "...done"
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks 
 for file in $(ls $SCRIPTPATH | egrep -vi $exclude); do
     #[ -d $file ] && continue
-    mv -f ~/.$file ~/dotfiles_old/ 2>/dev/null
+    mv -f ~/.$file $olddir/ 2>/dev/null
     echo ln -fs $SCRIPTPATH/$file ~/.$file
     ln -fs $SCRIPTPATH/$file ~/.$file || echo "failed ln -s $SCRIPTPATH/$file ~/.$file"
 done
 
-##for YoucompleteMe - https://github.com/Valloric/YouCompleteMe
-##steps for Fedora!
-sudo dnf install automake gcc gcc-c++ kernel-devel cmake
-sudo dnf install python-devel python3-devel
 #cd ~/.vim/bundle/YouCompleteMe
 #./install.py --clang-completer
 #
@@ -33,8 +29,14 @@ sudo dnf install python-devel python3-devel
 #    #cd /lib64
 #    #sudo ln -s libncurses.so.* libtinfo.so.*
 #fi
-#
-##for syntastic
+
+#adittional things needed:
+
 ##fedora
-#sudo yum install pylint
-##TODO install c, c++ checkers
+#sudo yum install pylint flake8 autopep8
+
+#mac
+# some commands to install pylink flake8 autopep8
+
+
+##for YoucompleteMe follow guide in - https://github.com/Valloric/YouCompleteMe
