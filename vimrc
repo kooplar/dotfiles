@@ -12,6 +12,7 @@ endif
 " To force update/install plugins (and run the do command) run :PlugUpdate!
 " To view status of plugins run :PlugStatus
 call plug#begin('~/.vim/bundle')
+
 "TODO: fuzzy finder ctrl-p or fzf?
 "colors
 Plug 'jnurmine/Zenburn'
@@ -37,6 +38,7 @@ let g:limelight_conceal_ctermfg = 'gray'
 
 call plug#end()
 
+
 " vim settings. use :help <option> for fmore info
 filetype on
 filetype plugin indent on
@@ -58,7 +60,7 @@ set showcmd " show the vim command in the bottom right
 set cursorline " highlight current line
 set hlsearch " highlighted search
 set incsearch " search as characters are entered
-set history=1000 "increase history of commands from thr default 20
+set history=1000 "increase history of commands from the default 20
 set showmatch " highlight matching [{()}]
 set foldenable " enable folding
 set foldlevelstart=99 " how many folds open by default
@@ -76,7 +78,9 @@ set backspace=indent,eol,start
 set formatoptions+=j " Delete comment character when joining commented lines
 set autoread " when the file is changed outside the current buffer, reload it
 
+" mash on jk to go back to normal mode
 inoremap jk <Esc> " jk = esc
+inoremap kj <Esc> " kj = esc
 "nnoremap <leader>rr :source ~/.vimrc<CR> " reload .vimrc
 nnoremap <leader><leader> :e#<CR> " open the previously opened file (in the same vim instance)
 nnoremap <leader>/ :nohlsearch<CR> " turn off highlight from last search
