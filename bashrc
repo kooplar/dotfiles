@@ -9,3 +9,9 @@ fi
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
+
+os=$(uname)
+
+if [ $os = "Darwin" ]; then
+    alias ls="ls -G"
+fi
