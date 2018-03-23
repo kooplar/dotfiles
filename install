@@ -3,6 +3,10 @@
 
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 olddir=~/dotfiles_old
+# just in case we run install twice
+if [ -d $olddir ]; then
+    olddir=${olddir}_$$
+fi
 exclude="install|README.md|LICENSE"
 
 # create dotfiles_old in homedir
@@ -35,7 +39,15 @@ done
 #sudo yum install pylint flake8 autopep8
 
 #mac
-# some commands to install pylink flake8 autopep8
+# install hombrew
+# brew install cmake
+# brew install flake8
+# brew install autopep8
+# brew install python3
+# brew install pip
+# brew install wget
+# wget https://bootstrap.pypa.io/get-pip.py && sudo python get-pip.py
+# pip install pylint
 
 
 ##for YoucompleteMe follow guide in - https://github.com/Valloric/YouCompleteMe
