@@ -30,7 +30,7 @@ Plug 'tpope/vim-surround' " :help surround
 "code completion/semantics
 Plug 'w0rp/ale', {'for': ['python']} " ycm does c family
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer',
-\   'for': ['c','cpp','python', 'vim']}
+\   'for': ['c','cpp','python', 'vim', 'sh']}
 "ui plugins
 Plug 'junegunn/goyo.vim' " :Goyo
 Plug 'junegunn/limelight.vim' " :Limelight
