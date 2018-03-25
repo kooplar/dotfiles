@@ -17,6 +17,7 @@ call plug#begin('~/.vim/bundle')
 "colors
 Plug 'jnurmine/Zenburn'
 
+
 "commands
 "Plug 'tpope/unimpared' " TODO spend some time with this before enabling
 Plug 'tpope/vim-surround' " :help surround
@@ -79,8 +80,8 @@ set formatoptions+=j " Delete comment character when joining commented lines
 set autoread " when the file is changed outside the current buffer, reload it
 
 " mash on jk to go back to normal mode
-inoremap jk <Esc> " jk = esc
-inoremap kj <Esc> " kj = esc
+inoremap jk <Esc>" jk = esc
+inoremap kj <Esc>" kj = esc
 "nnoremap <leader>rr :source ~/.vimrc<CR> " reload .vimrc
 nnoremap <leader><leader> :e#<CR> " open the previously opened file (in the same vim instance)
 nnoremap <leader>/ :nohlsearch<CR> " turn off highlight from last search
