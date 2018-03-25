@@ -8,18 +8,23 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-" To update/install plugins run :PlugUpdate
-" To force update/install plugins (and run the do command) run :PlugUpdate!
+" To install plugins run :PlugInstall
+" To update plugins run :PlugUpdate
+" To force update plugins (and run the do command) run :PlugUpdate!
 " To view status of plugins run :PlugStatus
 call plug#begin('~/.vim/bundle')
 
 "TODO: fuzzy finder ctrl-p or fzf?
 "colors
 Plug 'jnurmine/Zenburn'
-
+Plug 'altercation/vim-colors-solarized'
 
 "commands
-"Plug 'tpope/unimpared' " TODO spend some time with this before enabling
+Plug 'tpope/vim-unimpaired' "
+" #[<spacce> add # lines before (or ] for after) current cursor
+" #[e #]e move current line # lines up for down
+" [os ]os enable/disable spelling
+" [y ]y encode/decode c strings (add escape chars,etc)
 Plug 'tpope/vim-surround' " :help surround
 " opening [ = deletecontainted whitespace. closing ] dont delete whitespace
 " use S instead of s to place the surrounded object on its own line
@@ -78,11 +83,16 @@ set ruler " show the line and column # of the cursor position
 set backspace=indent,eol,start
 set formatoptions+=j " Delete comment character when joining commented lines
 set autoread " when the file is changed outside the current buffer, reload it
+set spelllang=en_us
+
+"abbreviatins while typying in insert mode
+" type xdate to insert current date
+iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 
 " mash on jk to go back to normal mode
 inoremap jk <Esc>" jk = esc
 inoremap kj <Esc>" kj = esc
-"nnoremap <leader>rr :source ~/.vimrc<CR> " reload .vimrc
+nnoremap <leader>rr :source ~/.vimrc<CR> " reload .vimrc
 nnoremap <leader><leader> :e#<CR> " open the previously opened file (in the same vim instance)
 nnoremap <leader>/ :nohlsearch<CR> " turn off highlight from last search
 nnoremap <leader>S :mksession!<CR> " save current session. open with vim -S
@@ -92,6 +102,8 @@ augroup CloseLoclistWindowGroup " close location list if its the last file
   autocmd!
   autocmd QuitPre * if empty(&buftype) | lclose | endif
 augroup END
+
+autocmd FileType gitcommit setlocal spell " check spelling in git commits
 
 "
 " Ale settings
