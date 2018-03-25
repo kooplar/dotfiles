@@ -1,5 +1,10 @@
 # .bashrc
 
+# source bb specifics
+if [ -f ~/.bbbashrc ]; then
+    . ~/.bbbashrc
+fi
+
 # Source global definitions
 if [ -f /etc/bashrc ]; then
     . /etc/bashrc
@@ -9,6 +14,9 @@ fi
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
+
+alias lrt="ls -lrt"
+alias ll="ls -l"
 
 ##-ANSI-COLOR-CODES-##
 Color_Off="\[\033[0m\]"
@@ -35,6 +43,8 @@ __prompt_command() {
     fi
     PS1+="\A $Cyan\u${Color_Off}@$Cyan\h${Color_Off}\$ "
 }
+
+# os specifics
 
 os=$(uname)
 
