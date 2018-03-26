@@ -34,7 +34,11 @@ Plug 'tpope/vim-surround' " :help surround
 " ds" -> delete surrounding
 
 "code completion/semantics
-Plug 'w0rp/ale', {'for': ['python']} " ycm does c family
+if v:version >= 800
+    Plug 'w0rp/ale', {'for': ['python']} " ycm does c family
+else
+    Plug 'vim-syntastic/syntastic'
+endif
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer',
 \   'for': ['c','cpp','python', 'vim', 'sh']}
 "ui plugins
@@ -59,7 +63,6 @@ set tabstop=4 " number of visual spaces per TAB
 set softtabstop=4 " number of spaces in tab when editing
 set expandtab " make tab insert spaces instead
 set autoindent
-set smartindent
 set number
 set rnu
 set showcmd " show the vim command in the bottom right
