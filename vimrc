@@ -20,27 +20,32 @@ Plug 'jnurmine/Zenburn'
 Plug 'altercation/vim-colors-solarized'
 
 "commands
-Plug 'tpope/vim-unimpaired' "
+Plug 'tpope/vim-unimpaired' " :help unimpaired
 " #[<spacce> add # lines before (or ] for after) current cursor
 " #[e #]e move current line # lines up for down
 " [os ]os enable/disable spelling
 " [y ]y encode/decode c strings (add escape chars,etc)
 Plug 'tpope/vim-surround' " :help surround
-" opening [ = deletecontainted whitespace. closing ] dont delete whitespace
+" opening [ = delete containted whitespace. closing ] dont delete whitespace
 " use S instead of s to place the surrounded object on its own line
 " cs"' -> change "h" to 'h'
 " ysw] -> add [] to text objext w, ys = you surround (according to tpope..)
 " yss) -> yss is a special case to work on the whole line
 " ds" -> delete surrounding
+Plug 'AndrewRadev/splitjoin.vim',  {'for': ['c','cpp','python', 'vim', 'sh']}
+" This plugin is code syntax aware and will split/join lines accordingly
+" gJ - join multiple lines into one
+" gS - split one line into multiple
 
 "code completion/semantics
 if v:version >= 800
-    Plug 'w0rp/ale', {'for': ['python']} " ycm does c family
+    Plug 'w0rp/ale', {'for': ['python', 'sh']} " ycm does c family
 else
-    Plug 'vim-syntastic/syntastic'
+    Plug 'vim-syntastic/syntastic' {'for': ['python', 'sh']}
 endif
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer',
 \   'for': ['c','cpp','python', 'vim', 'sh']}
+
 "ui plugins
 Plug 'junegunn/goyo.vim' " :Goyo
 Plug 'junegunn/limelight.vim' " :Limelight
@@ -92,9 +97,10 @@ set spelllang=en_us
 " type xdate to insert current date
 iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 
-" mash on jk to go back to normal mode
+" jk to go back to normal mode
 inoremap jk <Esc>" jk = esc
-inoremap kj <Esc>" kj = esc
+" kj to go back to normal mode and save the file
+inoremap kj <Esc>:w!<CR>" kj = esc
 nnoremap <leader>rr :source ~/.vimrc<CR> " reload .vimrc
 nnoremap <leader><leader> :e#<CR> " open the previously opened file (in the same vim instance)
 nnoremap <leader>/ :nohlsearch<CR> " turn off highlight from last search
@@ -111,7 +117,7 @@ autocmd FileType gitcommit setlocal spell " check spelling in git commits
 "
 " Ale settings
 let g:ale_lint_on_enter = 0 " dont lint on opening file
-let g:ale_lint_delay = 1000 " ms before linting kicks in while typing
+let g:ale_lint_delay = 500 " ms before linting kicks in while typing
 let g:ale_lint_on_text_changed = 'always'
 let g:ale_fix_on_save = 0
 let g:ale_sign_error = '✗'
@@ -123,6 +129,7 @@ let g:ale_loclist_msg_format = '[%linter% %code%] %s [%severity%]' "loclist form
 "note that pylint is not async, it requieres data to be on disk
 let g:ale_linters = {
 \   'python': ['flake8', 'pylint'],
+\   'sh': ['shellcheck']
 \}
 let g:ale_fixers = {
 \   'python': ['autopep8']
