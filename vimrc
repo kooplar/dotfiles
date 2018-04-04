@@ -45,6 +45,9 @@ else
 endif
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer',
 \   'for': ['c','cpp','python', 'vim', 'sh']}
+"TODO: test out the below plugins before enabling in the repo
+"Plug 'Raimondi/delimitMate' " insert mode auto completion for quotes,paren,etc.
+"Plug 'SirVer/ultisnips' " insert mode code snippets
 
 "ui plugins
 Plug 'junegunn/goyo.vim' " :Goyo
