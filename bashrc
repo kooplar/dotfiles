@@ -17,6 +17,7 @@ fi
 
 alias lrt="ls -lrt"
 alias ll="ls -l"
+alias v="vim -u NONE -c 'filetype plugin on' -c 'set nu'" # vim without loading vimrc
 
 ##-ANSI-COLOR-CODES-##
 Color_Off="\[\033[0m\]"

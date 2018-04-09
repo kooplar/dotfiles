@@ -14,16 +14,30 @@ endif
 " To view status of plugins run :PlugStatus
 call plug#begin('~/.vim/bundle')
 
+" searching
 "TODO: fuzzy finder ctrl-p or fzf?
+Plug 'nelstrom/vim-visual-star-search'
+" after a visual selection, press * or # to search for that text
+
 "colors
 Plug 'jnurmine/Zenburn'
 Plug 'altercation/vim-colors-solarized'
 
 "commands
+Plug 'tpope/vim-repeat' " let '.' repeat plugins
+Plug 'tpope/vim-commentary' " comment lines
+" toggles the comment lines specified.
+" gcgc uncomment adjacent commented lines
+" [count]gcc to comment count lines
+" gc{motion}
+" visyal mode then gc to comment it
+" :7,17Commentary to comment lines 7-17
+" :g/TODO/Commentary global invocation
 Plug 'tpope/vim-unimpaired' " :help unimpaired
 " #[<spacce> add # lines before (or ] for after) current cursor
 " #[e #]e move current line # lines up for down
-" [os ]os enable/disable spelling
+" =os enable/disable spelling
+" =ow enable/disable word wrap
 " [y ]y encode/decode c strings (add escape chars,etc)
 Plug 'tpope/vim-surround' " :help surround
 " opening [ = delete containted whitespace. closing ] dont delete whitespace
@@ -32,10 +46,14 @@ Plug 'tpope/vim-surround' " :help surround
 " ysw] -> add [] to text objext w, ys = you surround (according to tpope..)
 " yss) -> yss is a special case to work on the whole line
 " ds" -> delete surrounding
+Plug 'tpope/vim-speeddating'
+" use Ctrl-a and ctrl-x to update dta stamps correctly
+
 Plug 'AndrewRadev/splitjoin.vim',  {'for': ['c','cpp','python', 'vim', 'sh']}
 " This plugin is code syntax aware and will split/join lines accordingly
 " gJ - join multiple lines into one
 " gS - split one line into multiple
+
 
 "code completion/semantics
 if v:version >= 800
@@ -63,7 +81,7 @@ filetype plugin indent on
 if !exists("g:syntax_on") " guard multiple sets
         syntax enable " syntax highlight based on filetypes
 endif
-colorscheme desert
+colorscheme solarized
 "set colorcolumn=80
 set nowrap
 set shiftwidth=4
@@ -81,7 +99,7 @@ set history=1000 "increase history of commands from the default 20
 set showmatch " highlight matching [{()}]
 set foldenable " enable folding
 set foldlevelstart=99 " how many folds open by default
-set foldmethod=indent " fold based on indent level (python)
+set foldmethod=syntax
 set noswapfile
 set fileformat=unix
 set list listchars=tab:▷⋅,trail:▷,nbsp:▷ " display char for bad empty spaces
@@ -96,19 +114,24 @@ set formatoptions+=j " Delete comment character when joining commented lines
 set autoread " when the file is changed outside the current buffer, reload it
 set spelllang=en_us
 
-"abbreviatins while typying in insert mode
+"abbreviations while typying in insert mode
 " type xdate to insert current date
 iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 
 " jk to go back to normal mode
-inoremap jk <Esc>" jk = esc
+inoremap jk <Esc>
 " kj to go back to normal mode and save the file
-inoremap kj <Esc>:w!<CR>" kj = esc
+inoremap kj <Esc>:w!<CR>
+" ij to get one normal mode command in insert mode than back to insert
+inoremap ij <C-o>
+
 nnoremap <leader>rr :source ~/.vimrc<CR> " reload .vimrc
 nnoremap <leader><leader> :e#<CR> " open the previously opened file (in the same vim instance)
 nnoremap <leader>/ :nohlsearch<CR> " turn off highlight from last search
 nnoremap <leader>S :mksession!<CR> " save current session. open with vim -S
 " need a macro to open/close all folds
+nnoremap <leader>wd :w<CR>:w! ~/dev/%<CR> " write the current file to ~/dev
+nnoremap <leader>wb :w<CR>:w! ~/mbig/%<CR> " write the current file to ~/mbig
 
 augroup CloseLoclistWindowGroup " close location list if its the last file
   autocmd!
