@@ -47,7 +47,7 @@ Plug 'tpope/vim-surround' " :help surround
 " yss) -> yss is a special case to work on the whole line
 " ds" -> delete surrounding
 Plug 'tpope/vim-speeddating'
-" use Ctrl-a and ctrl-x to update dta stamps correctly
+" use Ctrl-a and ctrl-x to update date stamps correctly
 
 Plug 'AndrewRadev/splitjoin.vim',  {'for': ['c','cpp','python', 'vim', 'sh']}
 " This plugin is code syntax aware and will split/join lines accordingly
@@ -61,7 +61,8 @@ if v:version >= 800
 else
     Plug 'vim-syntastic/syntastic' {'for': ['python', 'sh']}
 endif
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer',
+Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer', 'frozen': 1,
+\   'on': 'YcmDiags',
 \   'for': ['c','cpp','python', 'vim', 'sh']}
 "TODO: test out the below plugins before enabling in the repo
 "Plug 'Raimondi/delimitMate' " insert mode auto completion for quotes,paren,etc.
@@ -82,6 +83,7 @@ if !exists("g:syntax_on") " guard multiple sets
         syntax enable " syntax highlight based on filetypes
 endif
 colorscheme solarized
+set background=dark
 "set colorcolumn=80
 set nowrap
 set shiftwidth=4
@@ -113,6 +115,7 @@ set backspace=indent,eol,start
 set formatoptions+=j " Delete comment character when joining commented lines
 set autoread " when the file is changed outside the current buffer, reload it
 set spelllang=en_us
+set ttyfast " enable faster terminal updates
 
 "abbreviations while typying in insert mode
 " type xdate to insert current date
@@ -193,12 +196,14 @@ nnoremap [l :ALEPreviousWrap<CR>
 
 "YouCompleteMe settings
 "g:ycm_disable_for_files_larger_than_kb = 1000 " in kb. default=1000
+let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_always_populate_location_list = 1 " populates (but doesnt show) loc list
 let g:ycm_error_symbol = "✗"
 let g:ycm_warning_symbol = "w" "
 
 " :YcmDebugInfo "display ycmd settings and compilation flags
 " :YcmCompleter RestartServer /path/to/python3 restart server with optional new binary
+nnoremap <leader>yo :YcmDiags<CR> " the plugin is mapped to turn on with this
 nnoremap <F5> :YcmForceCompileAndDiagnostics<CR> " recompile and show err
 nnoremap <leader>yr :YcmForceCompileAndDiagnostics<CR> " recompile and show err
 nnoremap <leader>ye :YcmDiags<CR> " display bottom row list of errors
@@ -208,8 +213,8 @@ nnoremap <leader>yg :YcmCompleter GoTo<CR> " Goto file that defines or implmnt s
 nnoremap <leader>ygr :YcmCompleter GoToReferences<CR> " find references to symbol
 nnoremap <leader>yt :YcmCompleter GetType<CR> " print the type of the variable
 nnoremap <leader>yd :YcmCompleter GetDoc<CR> " show docstring
-nnoremap <leader>y2 :YcmCompleter RestartServer python2 "not tested yet
-nnoremap <leader>y3 :YcmCompleter RestartServer python3 "not tested yet
+nnoremap <leader>y2 :YcmCompleter RestartServer python2<CR>
+nnoremap <leader>y3 :YcmCompleter RestartServer python3<CR>
 nnoremap ]l :lnext<CR>
 nnoremap [l :lprev<CR>
 

@@ -15,6 +15,13 @@ fi
 
 # User specific aliases and functions
 
+# os specifics
+os=$(uname)
+
+if [ $os = "Darwin" ]; then
+    alias ls="ls -G"
+fi
+
 alias lrt="ls -lrt"
 alias ll="ls -l"
 alias v="vim -u NONE -c 'filetype plugin on' -c 'set nu'" # vim without loading vimrc
@@ -44,11 +51,3 @@ __prompt_command() {
     fi
     PS1+="\A $Cyan\u${Color_Off}@$Cyan\h${Color_Off}\$ "
 }
-
-# os specifics
-
-os=$(uname)
-
-if [ $os = "Darwin" ]; then
-    alias ls="ls -G"
-fi
