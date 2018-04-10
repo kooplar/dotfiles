@@ -116,6 +116,8 @@ set formatoptions+=j " Delete comment character when joining commented lines
 set autoread " when the file is changed outside the current buffer, reload it
 set spelllang=en_us
 set ttyfast " enable faster terminal updates
+highlight clear SignColumn
+highlight clear LineNr
 
 "abbreviations while typying in insert mode
 " type xdate to insert current date
