@@ -1,3 +1,4 @@
+" export LIGHTVIM before loading this vimrc for a lighter version of it
 set nocompatible " disable compatability with vi
 let mapleader=" "
 
@@ -56,14 +57,18 @@ Plug 'AndrewRadev/splitjoin.vim',  {'for': ['c','cpp','python', 'vim', 'sh']}
 
 
 "code completion/semantics
-if v:version >= 800
-    Plug 'w0rp/ale', {'for': ['python', 'sh']} " ycm does c family
-else
-    Plug 'vim-syntastic/syntastic' {'for': ['python', 'sh']}
+if empty($LIGHTVIM)
+    if v:version >= 800
+        Plug 'w0rp/ale', {'for': ['python', 'sh']} " ycm does c family
+    else
+        Plug 'vim-syntastic/syntastic' {'for': ['python', 'sh']}
+    endif
 endif
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer', 'frozen': 1,
-\   'on': 'YcmDiags',
-\   'for': ['c','cpp','python', 'vim', 'sh']}
+if empty($LIGHTVIM)
+    Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer', 'frozen': 1,
+    \   'on': 'YcmDiags',
+    \   'for': ['c','cpp','python', 'vim', 'sh']}
+endif
 "TODO: test out the below plugins before enabling in the repo
 "Plug 'Raimondi/delimitMate' " insert mode auto completion for quotes,paren,etc.
 "Plug 'SirVer/ultisnips' " insert mode code snippets
