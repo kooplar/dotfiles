@@ -22,6 +22,7 @@ if [ $os = "Darwin" ]; then
     alias ls="ls -G"
 fi
 
+alias grep='grep --color=auto'
 alias lrt="ls -lrt"
 alias ll="ls -l"
 alias v="vim -u NONE -c 'filetype plugin on' -c 'set nu'" # vim without loading vimrc

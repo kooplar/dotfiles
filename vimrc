@@ -31,7 +31,7 @@ Plug 'tpope/vim-commentary' " comment lines
 " gcgc uncomment adjacent commented lines
 " [count]gcc to comment count lines
 " gc{motion}
-" visyal mode then gc to comment it
+" visual mode then gc to comment it
 " :7,17Commentary to comment lines 7-17
 " :g/TODO/Commentary global invocation
 Plug 'tpope/vim-unimpaired' " :help unimpaired
