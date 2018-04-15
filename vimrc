@@ -47,8 +47,13 @@ Plug 'tpope/vim-surround' " :help surround
 " ysw] -> add [] to text objext w, ys = you surround (according to tpope..)
 " yss) -> yss is a special case to work on the whole line
 " ds" -> delete surrounding
+" use S"[( in visual selection to surround selection
 Plug 'tpope/vim-speeddating'
 " use Ctrl-a and ctrl-x to update date stamps correctly
+Plug 'tpope/vim-vinegar'
+" press - in any buffer to open the dir listing, - again to go up, etc.
+" press . to use file in an ex command
+" y. to yank absolute path to file under the curosr
 
 Plug 'AndrewRadev/splitjoin.vim',  {'for': ['c','cpp','python', 'vim', 'sh']}
 " This plugin is code syntax aware and will split/join lines accordingly
@@ -79,6 +84,7 @@ Plug 'junegunn/limelight.vim' " :Limelight
 let g:limelight_conceal_ctermfg = 'gray'
 
 call plug#end()
+runtime macros/matchit.vim " ships with vim, but needs to be enabled
 
 
 " vim settings. use :help <option> for more info
@@ -112,6 +118,7 @@ set fileformat=unix
 set list listchars=tab:▷⋅,trail:▷,nbsp:▷ " display char for bad empty spaces
 set hidden " switch vim buffers without having to save
 set wildmenu " show possible completionons on the commandline
+set wildmode=longest:full,full
 set timeoutlen=1200 " more time for macros
 set scrolloff=1 " leave cursor one line below end of screen when scrolling
 set sidescrolloff=5
@@ -136,12 +143,16 @@ inoremap kj <Esc>:w!<CR>
 inoremap ij <C-o>
 
 nnoremap <leader>rr :source ~/.vimrc<CR> " reload .vimrc
+" NOTE: use ctrl-^ instead of the below as it also opens files that had no name
 nnoremap <leader><leader> :e#<CR> " open the previously opened file (in the same vim instance)
 nnoremap <leader>/ :nohlsearch<CR> " turn off highlight from last search
 nnoremap <leader>S :mksession!<CR> " save current session. open with vim -S
 " need a macro to open/close all folds
 nnoremap <leader>wd :w<CR>:w! ~/dev/%<CR> " write the current file to ~/dev
 nnoremap <leader>wb :w<CR>:w! ~/mbig/%<CR> " write the current file to ~/mbig
+
+" type %% in ex commands to expand the current buffers full directory
+cnoremap <expr> %%  getcmdtype() == ':' ? expand('%:p:h').'/' : '%%'
 
 augroup CloseLoclistWindowGroup " close location list if its the last file
   autocmd!
@@ -150,7 +161,9 @@ augroup END
 
 autocmd FileType gitcommit setlocal spell " check spelling in git commits
 
-"
+" netrw settings
+let g:netrw_winsize = 25
+
 " Ale settings
 let g:ale_lint_on_enter = 0 " dont lint on opening file
 let g:ale_lint_delay = 500 " ms before linting kicks in while typing
