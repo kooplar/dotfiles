@@ -10,16 +10,21 @@ if [ -f /etc/bashrc ]; then
     . /etc/bashrc
 fi
 
-# Uncomment the following line if you don't like systemctl's auto-paging feature:
-# export SYSTEMD_PAGER=
-
 # User specific aliases and functions
 
 # os specifics
 os=$(uname)
 
-if [ $os = "Darwin" ]; then
+if [ "$os" = "Darwin" ]; then
     alias ls="ls -G"
+elif [ "$os" = "Linux" ]; then
+    alias ls='ls --color=auto'
+    #load directory colors
+    #solarized installed from https://github.com/seebi/dircolors-solarized
+    # note that fedora loads ~/.dir_colors already
+    # if [ -f ~/.dir_colors ]; then
+    #     eval $(dircolors ~/.dir_colors)
+    # fi
 fi
 
 alias grep='grep --color=auto'
