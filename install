@@ -5,7 +5,7 @@ SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 olddir=~/dotfiles_old
 # just in case we run install twice
 if [ -d $olddir ]; then
-    olddir=${olddir}_$$
+    olddir=${olddir}_$(date '+%s')
 fi
 exclude="install|README.md|LICENSE"
 
@@ -20,6 +20,21 @@ for file in $(ls $SCRIPTPATH | egrep -vi $exclude); do
     echo ln -fs $SCRIPTPATH/$file ~/.$file
     ln -fs $SCRIPTPATH/$file ~/.$file || echo "failed ln -s $SCRIPTPATH/$file ~/.$file"
 done
+
+# to get solarized working with gnome terminal on linux:
+
+if [ "$(uname)" = "Linux" ]; then
+    echo "To install solarized colors please run:"
+    cat << EOF
+git clone https://github.com/Anthony25/gnome-terminal-colors-solarized.git && \
+cd gnome-terminal-colors-solarized/ && \
+./install.sh && \
+cp ~/.dir_colors/dircolors ~ && \
+rm ~/.dir_colors/dircolors && mdir ~/dircolors && \
+mv ~/dircolors ~/.dir_colors
+EOF
+fi
+
 
 #adittional things needed:
 
