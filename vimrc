@@ -40,6 +40,9 @@ Plug 'tpope/vim-unimpaired' " :help unimpaired
 " =os enable/disable spelling
 " =ow enable/disable word wrap
 " [y ]y encode/decode c strings (add escape chars,etc)
+" ]b [b to move to the next buffer (see bufers with :ls)
+" ]a [a move to next argument file (see with :args)
+" ]l [l move to next location lis (like ale and youcompleteme)
 Plug 'tpope/vim-surround' " :help surround
 " opening [ = delete containted whitespace. closing ] dont delete whitespace
 " use S instead of s to place the surrounded object on its own line
@@ -128,6 +131,7 @@ set formatoptions+=j " Delete comment character when joining commented lines
 set autoread " when the file is changed outside the current buffer, reload it
 set spelllang=en_us
 set ttyfast " enable faster terminal updates
+set smartcase " lowecase  matches upper also, but upper only matches upper
 highlight clear SignColumn
 highlight clear LineNr
 
@@ -142,14 +146,14 @@ inoremap kj <Esc>:w!<CR>
 " ij to get one normal mode command in insert mode than back to insert
 inoremap ij <C-o>
 
-nnoremap <leader>rr :source ~/.vimrc<CR> " reload .vimrc
+nnoremap <leader>rr :source ~/.vimrc<CR>" reload .vimrc
 " NOTE: use ctrl-^ instead of the below as it also opens files that had no name
-nnoremap <leader><leader> :e#<CR> " open the previously opened file (in the same vim instance)
-nnoremap <leader>/ :nohlsearch<CR> " turn off highlight from last search
-nnoremap <leader>S :mksession!<CR> " save current session. open with vim -S
+nnoremap <leader><leader> :e#<CR>" open the previously opened file (in the same vim instance)
+nnoremap <leader>/ :nohlsearch<CR>" turn off highlight from last search
+nnoremap <leader>S :mksession!<CR>" save current session. open with vim -S
 " need a macro to open/close all folds
-nnoremap <leader>wd :w<CR>:w! ~/dev/%<CR> " write the current file to ~/dev
-nnoremap <leader>wb :w<CR>:w! ~/mbig/%<CR> " write the current file to ~/mbig
+nnoremap <leader>wd :w<CR>:w! ~/dev/%<CR>" write the current file to ~/dev
+nnoremap <leader>wb :w<CR>:w! ~/mbig/%<CR>" write the current file to ~/mbig
 
 " type %% in ex commands to expand the current buffers full directory
 cnoremap <expr> %%  getcmdtype() == ':' ? expand('%:p:h').'/' : '%%'
