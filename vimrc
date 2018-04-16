@@ -148,7 +148,7 @@ inoremap ij <C-o>
 
 nnoremap <leader>rr :source ~/.vimrc<CR>" reload .vimrc
 " NOTE: use ctrl-^ instead of the below as it also opens files that had no name
-nnoremap <leader><leader> :e#<CR>" open the previously opened file (in the same vim instance)
+nnoremap <leader><leader> <c-^>" open the previously opened file (in the same vim instance)
 nnoremap <leader>/ :nohlsearch<CR>" turn off highlight from last search
 nnoremap <leader>S :mksession!<CR>" save current session. open with vim -S
 " need a macro to open/close all folds
