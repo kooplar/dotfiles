@@ -57,6 +57,10 @@ Plug 'tpope/vim-vinegar'
 " press - in any buffer to open the dir listing, - again to go up, etc.
 " press . to use file in an ex command
 " y. to yank absolute path to file under the curosr
+Plug 'tpope/vim-abolish'
+" provided normal mode cr command to coerce word to snake_case, camelCase, etc.
+" crc: camel crm: mixed cr_: snake u: snake upper cr-: dash cr<space> crc.  snakeCase
+" provides :Subvert (or just :S) ex command to replace words and the :Abolish
 
 Plug 'AndrewRadev/splitjoin.vim',  {'for': ['c','cpp','python', 'vim', 'sh']}
 " This plugin is code syntax aware and will split/join lines accordingly
@@ -146,8 +150,11 @@ inoremap kj <Esc>:w!<CR>
 " ij to get one normal mode command in insert mode than back to insert
 inoremap ij <C-o>
 
+" make normal mode & copy the previous flasg used
+nnoremap & :&&<CR>
+xnoremap & :&&<CR>
+
 nnoremap <leader>rr :source ~/.vimrc<CR>" reload .vimrc
-" NOTE: use ctrl-^ instead of the below as it also opens files that had no name
 nnoremap <leader><leader> <c-^>" open the previously opened file (in the same vim instance)
 nnoremap <leader>/ :nohlsearch<CR>" turn off highlight from last search
 nnoremap <leader>S :mksession!<CR>" save current session. open with vim -S
