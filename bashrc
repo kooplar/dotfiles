@@ -29,9 +29,10 @@ fi
 
 alias grep='grep --color=auto'
 alias lrt="ls -lrt"
+alias lrth="ls -lrth"
 alias ll="ls -l"
-alias v="vim -u NONE -c 'filetype plugin on' -c 'set nu'" # vim without loading vimrc
-alias lvim="LIGHTVIM='y' vim"
+alias v="PLUGVIM='n' vim" # no plugins but do read vimrc config
+alias ivim="IDEVIM='y' vim" # load heavyweight coding plugins
 
 ##-ANSI-COLOR-CODES-##
 Color_Off="\[\033[0m\]"
