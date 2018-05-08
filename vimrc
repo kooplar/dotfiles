@@ -45,8 +45,6 @@ set spelllang=en_us
 set ttyfast " enable faster terminal updates
 set smartcase " lowercase  matches upper also, but upper only matches upper
 set infercase " in insert completion mode (ctrlx) use smartcase like matching
-highlight clear SignColumn
-highlight clear LineNr
 
 runtime macros/matchit.vim " ships with vim, but needs to be enabled
 
@@ -89,3 +87,9 @@ let g:netrw_winsize = 25
 if empty($PLUGVIM)
     source ~/.vimrc_plugins
 endif
+
+highlight clear SignColumn
+highlight clear LineNr
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+highlight MatchParen cterm=bold ctermbg=black ctermfg=white

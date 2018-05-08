@@ -7,3 +7,4 @@ colors zenburn
 highlight clear SignColumn
 highlight clear LineNr
 setl nosmartindent " smartindent for python moves #comments to the start of line
+highlight MatchParen cterm=bold ctermbg=black ctermfg=white

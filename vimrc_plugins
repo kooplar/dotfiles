@@ -162,4 +162,4 @@ nnoremap <leader>ygr :YcmCompleter GoToReferences<CR> " find references to symbo
 nnoremap <leader>yt :YcmCompleter GetType<CR> " print the type of the variable
 nnoremap <leader>yd :YcmCompleter GetDoc<CR> " show docstring
 nnoremap <leader>y2 :YcmCompleter RestartServer python2<CR>
-nnoremap <leader>y3 :ycmcompleter restartserver python3<cr>
+nnoremap <leader>y3 :YcmCompleter RestartServer python3<cr>
