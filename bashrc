@@ -12,6 +12,8 @@ fi
 
 # User specific aliases and functions
 
+export EDITOR=vim
+
 # os specifics
 os=$(uname)
 
