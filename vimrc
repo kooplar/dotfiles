@@ -2,6 +2,7 @@
 " PLUGIN=n before loadng this vimrc to not load any plugins
 set nocompatible " disable compatibility with vi
 let mapleader=" "
+let maplocalleader=" "
 
 " vim settings. use :help <option> for more info
 filetype on
@@ -30,7 +31,8 @@ set foldlevelstart=99 " how many folds open by default
 set foldmethod=syntax
 set noswapfile
 set fileformat=unix
-set list listchars=tab:▷⋅,trail:▷,nbsp:▷ " display char for bad empty spaces
+" set list listchars=tab:▷⋅,trail:▷,nbsp:▷ " display char for bad empty spaces
+set list listchars=tab:>~,trail:>,nbsp:> " display char for bad empty spaces
 set hidden " switch vim buffers without having to save
 set wildmenu " show possible completionons on the commandline
 set wildmode=longest:full,full
@@ -51,6 +53,7 @@ runtime macros/matchit.vim " ships with vim, but needs to be enabled
 "abbreviations while typing in insert mode
 " type xdate to insert current date
 iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
+iab chnage change
 
 " jk to go back to normal mode
 inoremap jk <Esc>

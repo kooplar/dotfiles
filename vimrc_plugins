@@ -97,8 +97,10 @@ let g:ale_lint_on_enter = 0 " don't lint on opening file
 let g:ale_lint_delay = 500 " ms before linting kicks in while typing
 let g:ale_lint_on_text_changed = 'always'
 let g:ale_fix_on_save = 0
-let g:ale_sign_error = '✗'
-let g:ale_sign_style_error = 'S✗'
+" let g:ale_sign_error = '✗'
+let g:ale_sign_error = 'x'
+" let g:ale_sign_style_error = 'S✗'
+let g:ale_sign_style_error = 'Sx'
 let g:ale_sign_warning = 'w'
 let g:ale_sign_style_warning = 'Sw'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]' " format when cursor over line
@@ -146,7 +148,8 @@ nnoremap <leader>ac :ALEReset<CR> " clean all err/wan msgs
 "g:ycm_disable_for_files_larger_than_kb = 1000 " in kb. default=1000
 let g:ycm_autoclose_preview_window_after_completion=1
 let g:ycm_always_populate_location_list = 1 " populates (but doesn't show) loc list
-let g:ycm_error_symbol = "✗"
+"let g:ycm_error_symbol = "✗"
+let g:ycm_error_symbol = "x"
 let g:ycm_warning_symbol = "w" "
 
 " :YcmDebugInfo "display ycmd settings and compilation flags
