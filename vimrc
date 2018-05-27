@@ -7,9 +7,7 @@ let maplocalleader=" "
 " vim settings. use :help <option> for more info
 filetype on
 filetype plugin indent on
-if !exists("g:syntax_on") " guard multiple sets
-        syntax enable " syntax highlight based on filetypes
-endif
+syntax enable " syntax highlight based on filetypes
 set background=dark
 colorscheme solarized " its a plugin but we also copy it to vim/colors
 set nowrap
@@ -34,7 +32,7 @@ set fileformat=unix
 " set list listchars=tab:▷⋅,trail:▷,nbsp:▷ " display char for bad empty spaces
 set list listchars=tab:>~,trail:>,nbsp:> " display char for bad empty spaces
 set hidden " switch vim buffers without having to save
-set wildmenu " show possible completionons on the commandline
+set wildmenu " show possible completions on the commandline
 set wildmode=longest:full,full
 set timeoutlen=1200 " more time for macros
 set scrolloff=1 " leave cursor one line below end of screen when scrolling
