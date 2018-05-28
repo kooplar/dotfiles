@@ -52,6 +52,7 @@ runtime macros/matchit.vim " ships with vim, but needs to be enabled
 " type xdate to insert current date
 iab xdate <c-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 iab chnage change
+iab chnages changes
 
 " jk to go back to normal mode
 inoremap jk <Esc>
@@ -94,3 +95,15 @@ highlight clear LineNr
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 highlight MatchParen cterm=bold ctermbg=black ctermfg=white
+
+"plugin/function ideas
+"TODO: put the above color settings in a function, then set an autocommand
+" on the event ColorScheme call it. THis is because when changing colors,
+" it the left side sign column doesn't update correctly
+
+"TODO: function to diff current buffer vs current buffer - last change
+" Ideally it would bring up a vimdiff type of ui. This would be useful to
+" easily see what a big change did
+
+"TODO: autocommand when reading from stdin (vim -), call :AnsiEsc.
+"" we can use StdinReadPost event
