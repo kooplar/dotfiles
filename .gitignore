@@ -1,0 +1,12 @@
+# Vim
+vim/bundle/
+vim/autoload/
+vim/init.vim
+vim/.netrwhist
+
+# Tmux
+tmux/plugins
+tmux/resurrect
+
+# Python
+*.pyc
