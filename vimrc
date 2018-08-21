@@ -29,8 +29,8 @@ set foldlevelstart=99 " how many folds open by default
 set foldmethod=syntax
 set noswapfile
 set fileformat=unix
-" set list listchars=tab:▷⋅,trail:▷,nbsp:▷ " display char for bad empty spaces
-set list listchars=tab:>~,trail:>,nbsp:> " display char for bad empty spaces
+set list listchars=eol:¬,tab:▷⋅,trail:␣,nbsp:~ " display char for bad empty spaces
+" set list listchars=tab:>~,trail:>,nbsp:> " display char for bad empty spaces
 set hidden " switch vim buffers without having to save
 set wildmenu " show possible completions on the commandline
 set wildmode=longest:full,full
@@ -45,6 +45,7 @@ set spelllang=en_us
 set ttyfast " enable faster terminal updates
 set smartcase " lowercase  matches upper also, but upper only matches upper
 set infercase " in insert completion mode (ctrlx) use smartcase like matching
+set mousehide " hide mouse when typing
 
 runtime macros/matchit.vim " ships with vim, but needs to be enabled
 
