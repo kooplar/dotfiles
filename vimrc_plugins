@@ -23,6 +23,7 @@ Plug 'jnurmine/Zenburn'
 Plug 'altercation/vim-colors-solarized'
 
 "commands
+Plug 'tpope/vim-fugitive' " git integration with :Git
 Plug 'tpope/vim-repeat' " let '.' repeat plugins
 Plug 'tpope/vim-commentary' " comment lines
 " toggles the comment lines specified.
