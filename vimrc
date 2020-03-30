@@ -24,7 +24,7 @@ set hlsearch " highlighted search
 set incsearch " search as characters are entered
 set history=1000 "increase history of commands from the default 20
 set showmatch " highlight matching [{()}]
-set foldenable " enable folding
+set foldenable " enable folding. zc to fold, zo to open. zM fold all, zR open all
 set foldlevelstart=99 " how many folds open by default
 set foldmethod=syntax
 set noswapfile
@@ -70,9 +70,8 @@ nnoremap <leader>rr :source ~/.vimrc<CR>" reload .vimrc
 nnoremap <leader><leader> <c-^>" open the previously opened file (in the same vim instance)
 nnoremap <leader>/ :nohlsearch<CR>" turn off highlight from last search
 nnoremap <leader>S :mksession!<CR>" save current session. open with vim -S
-" need a macro to open/close all folds
-nnoremap <leader>wd :w<CR>:w! ~/dev/%<CR>" write the current file to ~/dev
-nnoremap <leader>wb :w<CR>:w! ~/mbig/%<CR>" write the current file to ~/mbig
+nnoremap <leader>wtmp :w<CR>:w! /tmp/%<CR>" write the current file to /tmp
+" TODO need a macro to open/close all folds
 
 " type %% in ex commands to expand the current buffers full directory
 cnoremap <expr> %%  getcmdtype() == ':' ? expand('%:p:h').'/' : '%%'

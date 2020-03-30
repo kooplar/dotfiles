@@ -66,6 +66,15 @@ Plug 'AndrewRadev/splitjoin.vim',  {'for': ['c','cpp','python', 'vim', 'sh']}
 " gJ - join multiple lines into one
 " gS - split one line into multiple
 
+
+Plug 'tmhedberg/SimpylFold' " make folding work for pythonb wth usual zc/zo commands
+let g:SimpylFold_docstring_preview=1 " Preview docstring in fold text
+let g:SimpylFold_fold_docstring=1 " Fold docstrings
+let b:SimpylFold_fold_docstring=1 " Fold docstrings (buffer local)
+let g:SimpylFold_fold_impor=1 " Fold imports
+let b:SimpylFold_fold_import=1 " Fold imports (buffer local)
+
+
 "code completion/semantics
 if !empty($IDEVIM)
     set path+=** " to easily find headers, apparently not recommend, but hey.
