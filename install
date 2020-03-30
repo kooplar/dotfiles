@@ -7,7 +7,7 @@ olddir=~/dotfiles_old
 if [ -d $olddir ]; then
     olddir=${olddir}_$(date '+%s')
 fi
-exclude="install|README.md|LICENSE"
+exclude="install|README.md|LICENSE|test_files"
 
 # create dotfiles_old in homedir
 echo "Creating $olddir for backup of any existing dotfiles in ~"
