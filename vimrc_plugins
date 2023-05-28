@@ -67,7 +67,7 @@ Plug 'AndrewRadev/splitjoin.vim',  {'for': ['c','cpp','python', 'vim', 'sh']}
 " gS - split one line into multiple
 
 
-Plug 'tmhedberg/SimpylFold' " make folding work for pythonb wth usual zc/zo commands
+Plug 'tmhedberg/SimpylFold' " make folding work for python wth usual zc/zo commands
 let g:SimpylFold_docstring_preview=1 " Preview docstring in fold text
 let g:SimpylFold_fold_docstring=1 " Fold docstrings
 let b:SimpylFold_fold_docstring=1 " Fold docstrings (buffer local)

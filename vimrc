@@ -10,6 +10,7 @@ filetype plugin indent on
 syntax enable " syntax highlight based on filetypes
 set background=dark
 colorscheme solarized " its a plugin but we also copy it to vim/colors
+let g:solarized_termcolors = 256  " For solarized to work with dark terminal background
 set nowrap
 set shiftwidth=4
 set tabstop=4 " number of visual spaces per TAB
