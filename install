@@ -35,6 +35,9 @@ mv ~/dircolors ~/.dir_colors
 EOF
 fi
 
+echo
+echo "restart tmux, and enter vim to complete  setup:
+
 
 #adittional things needed:
 
